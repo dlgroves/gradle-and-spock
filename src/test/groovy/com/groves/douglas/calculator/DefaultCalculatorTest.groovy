@@ -8,29 +8,31 @@ import spock.lang.*
  */
 class DefaultCalculatorTest extends Specification {
 
-    def "add two numbers together"(double x, double y, double z){
+    @Unroll
+    def "#x plus #y equals #z"(double x, double y, double z){
         given:
         def calculator = new DefaultCalculator()
         expect:
         calculator.add(x, y) == z
         where:
-        x |y |z
+         x| y|z
         -1|-1|-2
-        0 |-1|-1
+         0|-1|-1
         -1|0 |-1
-        0 |0 |0
-        1 |0 |1
-        0 |1 |1
-        1 |1 |2
+         0|0 |0
+         1|0 |1
+         0|1 |1
+         1|1 |2
     }
 
-    def "subtract two numbers"(double x, double y, double z){
+    @Unroll
+    def "#x minus #y equals #z"(double x, double y, double z){
         given:
         def calculator = new DefaultCalculator()
         expect:
         calculator.subtract(x, y) == z
         where:
-        x |y |z
+         x| y|z
         -1|-1|0
         -1| 0|-1
          0|-1|1
@@ -40,13 +42,14 @@ class DefaultCalculatorTest extends Specification {
          1| 1|0
     }
 
-    def "multiply two numbers together"(double x, double y, double z){
+    @Unroll
+    def "#x times #y equals #z"(double x, double y, double z){
         given:
         def calculator = new DefaultCalculator()
         expect:
         calculator.multiply(x, y) == z
         where:
-        x |y |z
+         x| y|z
         -1|-1|1
         -1| 0|-(0.0f)
          0|-1|-(0.0f)
@@ -59,24 +62,24 @@ class DefaultCalculatorTest extends Specification {
          3| 2|6
     }
 
-    def "divide two numbers"(double x, double y, double z){
+    @Unroll
+    def "#x divided by #y equals #z"(double x, double y, double z){
         given:
         def calculator = new DefaultCalculator()
         expect:
         calculator.divide(x, y) == z
         where:
-             x|y|z
+             x|     y|z
             -1|    -1|1
             -1|     0|Double.NEGATIVE_INFINITY
              0|    -1|-(0.0f)
-        -(0.0)|-(0.0)|Double.NaN
-        -(0.0)|     0|Double.NaN
-             0|-(0.0)|Double.NaN
+        -(0.0f)|-(0.0f)|Double.NaN
+        -(0.0f)|     0|Double.NaN
+             0|-(0.0f)|Double.NaN
              0|     0|Double.NaN
              0|     1|0
              1|     0|Double.POSITIVE_INFINITY
              1|     1|1
              2|     1|2
-
     }
 }
