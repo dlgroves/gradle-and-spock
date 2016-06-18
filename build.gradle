@@ -1,17 +1,14 @@
-apply plugin: 'java'
-apply plugin: 'groovy'
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'groovy'
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
-version = 0.1
+    repositories {
+        jcenter()
+    }
 
-repositories {
-    jcenter()
-}
+    sourceCompatibility = 1.7
+    targetCompatibility = 1.7
 
-dependencies {
-    compile 'org.slf4j:slf4j-api:1.7.21'
-    testCompile 'org.codehaus.groovy:groovy-all:2.4.7'
-    testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
-    testCompile 'junit:junit:4.12'
+    group = 'com.groves.douglas'
+    version = 0.1
 }
